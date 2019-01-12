@@ -16,6 +16,7 @@ import org.springframework.web.context.WebApplicationContext;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = DemoApplication.class)
@@ -38,6 +39,8 @@ public class EmployeeRestControllerIntegrationTest {
     public void verifyAllEmployeeList()
             throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/employee/all").accept(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("", hasSize(4))).andDo(print());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andDo(print());
     }
 }
