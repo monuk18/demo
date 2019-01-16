@@ -21,11 +21,13 @@ public class InitDbService {
 		{
 			Employee emp = new Employee();
 			emp.setFirstName("SONU");
+			emp.setDepartment("CSE");
 			employeeService.addEmployee(emp);
 		}
 		{
 			Employee emp = new Employee();
 			emp.setFirstName("MONU");
+			emp.setDepartment("IT");
 			employeeService.addEmployee(emp);
 		}
 	}
